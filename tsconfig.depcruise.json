@@ -1,0 +1,706 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@calcom/api-proxy": [
+        "apps/api"
+      ],
+      "@calcom/api-proxy/*": [
+        "apps/api/*"
+      ],
+      "@calcom/docs": [
+        "apps/docs"
+      ],
+      "@calcom/docs/*": [
+        "apps/docs/*"
+      ],
+      "@calcom/web": [
+        "apps/web"
+      ],
+      "@calcom/web/*": [
+        "apps/web/*"
+      ],
+      "@calcom/api-v2": [
+        "apps/api/v2"
+      ],
+      "@calcom/api-v2/*": [
+        "apps/api/v2/*"
+      ],
+      "@calcom/app-store": [
+        "packages/app-store"
+      ],
+      "@calcom/app-store/*": [
+        "packages/app-store/*"
+      ],
+      "@calcom/app-store-cli": [
+        "packages/app-store-cli"
+      ],
+      "@calcom/app-store-cli/*": [
+        "packages/app-store-cli/*"
+      ],
+      "@calcom/config": [
+        "packages/config"
+      ],
+      "@calcom/config/*": [
+        "packages/config/*"
+      ],
+      "@calcom/dayjs": [
+        "packages/dayjs"
+      ],
+      "@calcom/dayjs/*": [
+        "packages/dayjs/*"
+      ],
+      "@calcom/debugging": [
+        "packages/debugging"
+      ],
+      "@calcom/debugging/*": [
+        "packages/debugging/*"
+      ],
+      "@calcom/emails": [
+        "packages/emails"
+      ],
+      "@calcom/emails/*": [
+        "packages/emails/*"
+      ],
+      "@calcom/features": [
+        "packages/features"
+      ],
+      "@calcom/features/*": [
+        "packages/features/*"
+      ],
+      "@calcom/i18n": [
+        "packages/i18n"
+      ],
+      "@calcom/i18n/*": [
+        "packages/i18n/*"
+      ],
+      "@calcom/kysely": [
+        "packages/kysely"
+      ],
+      "@calcom/kysely/*": [
+        "packages/kysely/*"
+      ],
+      "@calcom/lib": [
+        "packages/lib"
+      ],
+      "@calcom/lib/*": [
+        "packages/lib/*"
+      ],
+      "@calcom/prisma": [
+        "packages/prisma"
+      ],
+      "@calcom/prisma/*": [
+        "packages/prisma/*"
+      ],
+      "@calcom/testing": [
+        "packages/testing/src"
+      ],
+      "@calcom/testing/*": [
+        "packages/testing/src/*"
+      ],
+      "@calcom/trpc": [
+        "packages/trpc"
+      ],
+      "@calcom/trpc/*": [
+        "packages/trpc/*"
+      ],
+      "@calcom/tsconfig": [
+        "packages/tsconfig"
+      ],
+      "@calcom/tsconfig/*": [
+        "packages/tsconfig/*"
+      ],
+      "@calcom/types": [
+        "packages/types"
+      ],
+      "@calcom/types/*": [
+        "packages/types/*"
+      ],
+      "@calcom/ui": [
+        "packages/ui"
+      ],
+      "@calcom/ui/*": [
+        "packages/ui/*"
+      ],
+      "@calcom/embed-core": [
+        "packages/embeds/embed-core"
+      ],
+      "@calcom/embed-core/*": [
+        "packages/embeds/embed-core/*"
+      ],
+      "@calcom/embed-react": [
+        "packages/embeds/embed-react"
+      ],
+      "@calcom/embed-react/*": [
+        "packages/embeds/embed-react/*"
+      ],
+      "@calcom/embed-snippet": [
+        "packages/embeds/embed-snippet"
+      ],
+      "@calcom/embed-snippet/*": [
+        "packages/embeds/embed-snippet/*"
+      ],
+      "@calcom/feature-auth": [
+        "packages/features/auth"
+      ],
+      "@calcom/feature-auth/*": [
+        "packages/features/auth/*"
+      ],
+      "@calcom/alby": [
+        "packages/app-store/alby"
+      ],
+      "@calcom/alby/*": [
+        "packages/app-store/alby/*"
+      ],
+      "@calcom/applecalendar": [
+        "packages/app-store/applecalendar"
+      ],
+      "@calcom/applecalendar/*": [
+        "packages/app-store/applecalendar/*"
+      ],
+      "@calcom/attio": [
+        "packages/app-store/attio"
+      ],
+      "@calcom/attio/*": [
+        "packages/app-store/attio/*"
+      ],
+      "@calcom/basecamp3": [
+        "packages/app-store/basecamp3"
+      ],
+      "@calcom/basecamp3/*": [
+        "packages/app-store/basecamp3/*"
+      ],
+      "@calcom/btcpayserver": [
+        "packages/app-store/btcpayserver"
+      ],
+      "@calcom/btcpayserver/*": [
+        "packages/app-store/btcpayserver/*"
+      ],
+      "@calcom/caldavcalendar": [
+        "packages/app-store/caldavcalendar"
+      ],
+      "@calcom/caldavcalendar/*": [
+        "packages/app-store/caldavcalendar/*"
+      ],
+      "@calcom/campfire": [
+        "packages/app-store/campfire"
+      ],
+      "@calcom/campfire/*": [
+        "packages/app-store/campfire/*"
+      ],
+      "@calcom/closecom": [
+        "packages/app-store/closecom"
+      ],
+      "@calcom/closecom/*": [
+        "packages/app-store/closecom/*"
+      ],
+      "@calcom/dailyvideo": [
+        "packages/app-store/dailyvideo"
+      ],
+      "@calcom/dailyvideo/*": [
+        "packages/app-store/dailyvideo/*"
+      ],
+      "@calcom/databuddy": [
+        "packages/app-store/databuddy"
+      ],
+      "@calcom/databuddy/*": [
+        "packages/app-store/databuddy/*"
+      ],
+      "@calcom/demodesk": [
+        "packages/app-store/demodesk"
+      ],
+      "@calcom/demodesk/*": [
+        "packages/app-store/demodesk/*"
+      ],
+      "@calcom/dialpad": [
+        "packages/app-store/dialpad"
+      ],
+      "@calcom/dialpad/*": [
+        "packages/app-store/dialpad/*"
+      ],
+      "@calcom/discord": [
+        "packages/app-store/discord"
+      ],
+      "@calcom/discord/*": [
+        "packages/app-store/discord/*"
+      ],
+      "@calcom/dub": [
+        "packages/app-store/dub"
+      ],
+      "@calcom/dub/*": [
+        "packages/app-store/dub/*"
+      ],
+      "@calcom/eightxeight": [
+        "packages/app-store/eightxeight"
+      ],
+      "@calcom/eightxeight/*": [
+        "packages/app-store/eightxeight/*"
+      ],
+      "@calcom/element-call": [
+        "packages/app-store/element-call"
+      ],
+      "@calcom/element-call/*": [
+        "packages/app-store/element-call/*"
+      ],
+      "@calcom/exchange2013calendar": [
+        "packages/app-store/exchange2013calendar"
+      ],
+      "@calcom/exchange2013calendar/*": [
+        "packages/app-store/exchange2013calendar/*"
+      ],
+      "@calcom/exchange2016calendar": [
+        "packages/app-store/exchange2016calendar"
+      ],
+      "@calcom/exchange2016calendar/*": [
+        "packages/app-store/exchange2016calendar/*"
+      ],
+      "@calcom/exchangecalendar": [
+        "packages/app-store/exchangecalendar"
+      ],
+      "@calcom/exchangecalendar/*": [
+        "packages/app-store/exchangecalendar/*"
+      ],
+      "@calcom/facetime": [
+        "packages/app-store/facetime"
+      ],
+      "@calcom/facetime/*": [
+        "packages/app-store/facetime/*"
+      ],
+      "@calcom/famulor": [
+        "packages/app-store/famulor"
+      ],
+      "@calcom/famulor/*": [
+        "packages/app-store/famulor/*"
+      ],
+      "@calcom/fathom": [
+        "packages/app-store/fathom"
+      ],
+      "@calcom/fathom/*": [
+        "packages/app-store/fathom/*"
+      ],
+      "@calcom/feishucalendar": [
+        "packages/app-store/feishucalendar"
+      ],
+      "@calcom/feishucalendar/*": [
+        "packages/app-store/feishucalendar/*"
+      ],
+      "@calcom/ga4": [
+        "packages/app-store/ga4"
+      ],
+      "@calcom/ga4/*": [
+        "packages/app-store/ga4/*"
+      ],
+      "@calcom/giphy": [
+        "packages/app-store/giphy"
+      ],
+      "@calcom/giphy/*": [
+        "packages/app-store/giphy/*"
+      ],
+      "@calcom/googlecalendar": [
+        "packages/app-store/googlecalendar"
+      ],
+      "@calcom/googlecalendar/*": [
+        "packages/app-store/googlecalendar/*"
+      ],
+      "@calcom/googlevideo": [
+        "packages/app-store/googlevideo"
+      ],
+      "@calcom/googlevideo/*": [
+        "packages/app-store/googlevideo/*"
+      ],
+      "@calcom/gtm": [
+        "packages/app-store/gtm"
+      ],
+      "@calcom/gtm/*": [
+        "packages/app-store/gtm/*"
+      ],
+      "@calcom/hitpay": [
+        "packages/app-store/hitpay"
+      ],
+      "@calcom/hitpay/*": [
+        "packages/app-store/hitpay/*"
+      ],
+      "@calcom/horizon-workrooms": [
+        "packages/app-store/horizon-workrooms"
+      ],
+      "@calcom/horizon-workrooms/*": [
+        "packages/app-store/horizon-workrooms/*"
+      ],
+      "@calcom/hubspot": [
+        "packages/app-store/hubspot"
+      ],
+      "@calcom/hubspot/*": [
+        "packages/app-store/hubspot/*"
+      ],
+      "@calcom/huddle01video": [
+        "packages/app-store/huddle01video"
+      ],
+      "@calcom/huddle01video/*": [
+        "packages/app-store/huddle01video/*"
+      ],
+      "@calcom/ics-feed": [
+        "packages/app-store/ics-feedcalendar"
+      ],
+      "@calcom/ics-feed/*": [
+        "packages/app-store/ics-feedcalendar/*"
+      ],
+      "@calcom/insihts": [
+        "packages/app-store/insihts"
+      ],
+      "@calcom/insihts/*": [
+        "packages/app-store/insihts/*"
+      ],
+      "@calcom/intercom": [
+        "packages/app-store/intercom"
+      ],
+      "@calcom/intercom/*": [
+        "packages/app-store/intercom/*"
+      ],
+      "@calcom/jelly": [
+        "packages/app-store/jelly"
+      ],
+      "@calcom/jelly/*": [
+        "packages/app-store/jelly/*"
+      ],
+      "@calcom/jitsivideo": [
+        "packages/app-store/jitsivideo"
+      ],
+      "@calcom/jitsivideo/*": [
+        "packages/app-store/jitsivideo/*"
+      ],
+      "@calcom/larkcalendar": [
+        "packages/app-store/larkcalendar"
+      ],
+      "@calcom/larkcalendar/*": [
+        "packages/app-store/larkcalendar/*"
+      ],
+      "@calcom/linear": [
+        "packages/app-store/linear"
+      ],
+      "@calcom/linear/*": [
+        "packages/app-store/linear/*"
+      ],
+      "@calcom/lyra": [
+        "packages/app-store/lyra"
+      ],
+      "@calcom/lyra/*": [
+        "packages/app-store/lyra/*"
+      ],
+      "@calcom/make": [
+        "packages/app-store/make"
+      ],
+      "@calcom/make/*": [
+        "packages/app-store/make/*"
+      ],
+      "@calcom/matomo": [
+        "packages/app-store/matomo"
+      ],
+      "@calcom/matomo/*": [
+        "packages/app-store/matomo/*"
+      ],
+      "@calcom/metapixel": [
+        "packages/app-store/metapixel"
+      ],
+      "@calcom/metapixel/*": [
+        "packages/app-store/metapixel/*"
+      ],
+      "@calcom/mirotalk": [
+        "packages/app-store/mirotalk"
+      ],
+      "@calcom/mirotalk/*": [
+        "packages/app-store/mirotalk/*"
+      ],
+      "@calcom/mock-payment-app": [
+        "packages/app-store/mock-payment-app"
+      ],
+      "@calcom/mock-payment-app/*": [
+        "packages/app-store/mock-payment-app/*"
+      ],
+      "@calcom/nextcloudtalk": [
+        "packages/app-store/nextcloudtalk"
+      ],
+      "@calcom/nextcloudtalk/*": [
+        "packages/app-store/nextcloudtalk/*"
+      ],
+      "@calcom/office365calendar": [
+        "packages/app-store/office365calendar"
+      ],
+      "@calcom/office365calendar/*": [
+        "packages/app-store/office365calendar/*"
+      ],
+      "@calcom/office365video": [
+        "packages/app-store/office365video"
+      ],
+      "@calcom/office365video/*": [
+        "packages/app-store/office365video/*"
+      ],
+      "@calcom/paypal": [
+        "packages/app-store/paypal"
+      ],
+      "@calcom/paypal/*": [
+        "packages/app-store/paypal/*"
+      ],
+      "@calcom/ping": [
+        "packages/app-store/ping"
+      ],
+      "@calcom/ping/*": [
+        "packages/app-store/ping/*"
+      ],
+      "@calcom/pipedrive-crm": [
+        "packages/app-store/pipedrive-crm"
+      ],
+      "@calcom/pipedrive-crm/*": [
+        "packages/app-store/pipedrive-crm/*"
+      ],
+      "@calcom/plausible": [
+        "packages/app-store/plausible"
+      ],
+      "@calcom/plausible/*": [
+        "packages/app-store/plausible/*"
+      ],
+      "@calcom/posthog": [
+        "packages/app-store/posthog"
+      ],
+      "@calcom/posthog/*": [
+        "packages/app-store/posthog/*"
+      ],
+      "@calcom/qr_code": [
+        "packages/app-store/qr_code"
+      ],
+      "@calcom/qr_code/*": [
+        "packages/app-store/qr_code/*"
+      ],
+      "@calcom/riverside": [
+        "packages/app-store/riverside"
+      ],
+      "@calcom/riverside/*": [
+        "packages/app-store/riverside/*"
+      ],
+      "@calcom/roam": [
+        "packages/app-store/roam"
+      ],
+      "@calcom/roam/*": [
+        "packages/app-store/roam/*"
+      ],
+      "@calcom/salesforce": [
+        "packages/app-store/salesforce"
+      ],
+      "@calcom/salesforce/*": [
+        "packages/app-store/salesforce/*"
+      ],
+      "@calcom/salesroom": [
+        "packages/app-store/salesroom"
+      ],
+      "@calcom/salesroom/*": [
+        "packages/app-store/salesroom/*"
+      ],
+      "@calcom/sendgrid": [
+        "packages/app-store/sendgrid"
+      ],
+      "@calcom/sendgrid/*": [
+        "packages/app-store/sendgrid/*"
+      ],
+      "@calcom/shimmer-video": [
+        "packages/app-store/shimmervideo"
+      ],
+      "@calcom/shimmer-video/*": [
+        "packages/app-store/shimmervideo/*"
+      ],
+      "@calcom/signal": [
+        "packages/app-store/signal"
+      ],
+      "@calcom/signal/*": [
+        "packages/app-store/signal/*"
+      ],
+      "@calcom/sirius_video": [
+        "packages/app-store/sirius_video"
+      ],
+      "@calcom/sirius_video/*": [
+        "packages/app-store/sirius_video/*"
+      ],
+      "@calcom/skype": [
+        "packages/app-store/skype"
+      ],
+      "@calcom/skype/*": [
+        "packages/app-store/skype/*"
+      ],
+      "@calcom/stripepayment": [
+        "packages/app-store/stripepayment"
+      ],
+      "@calcom/stripepayment/*": [
+        "packages/app-store/stripepayment/*"
+      ],
+      "@calcom/sylapsvideo": [
+        "packages/app-store/sylapsvideo"
+      ],
+      "@calcom/sylapsvideo/*": [
+        "packages/app-store/sylapsvideo/*"
+      ],
+      "@calcom/tandemvideo": [
+        "packages/app-store/tandemvideo"
+      ],
+      "@calcom/tandemvideo/*": [
+        "packages/app-store/tandemvideo/*"
+      ],
+      "@calcom/telegram": [
+        "packages/app-store/telegram"
+      ],
+      "@calcom/telegram/*": [
+        "packages/app-store/telegram/*"
+      ],
+      "@calcom/twipla": [
+        "packages/app-store/twipla"
+      ],
+      "@calcom/twipla/*": [
+        "packages/app-store/twipla/*"
+      ],
+      "@calcom/umami": [
+        "packages/app-store/umami"
+      ],
+      "@calcom/umami/*": [
+        "packages/app-store/umami/*"
+      ],
+      "@calcom/vital": [
+        "packages/app-store/vital"
+      ],
+      "@calcom/vital/*": [
+        "packages/app-store/vital/*"
+      ],
+      "@calcom/weather_in_your_calendar": [
+        "packages/app-store/weather_in_your_calendar"
+      ],
+      "@calcom/weather_in_your_calendar/*": [
+        "packages/app-store/weather_in_your_calendar/*"
+      ],
+      "@calcom/webex": [
+        "packages/app-store/webex"
+      ],
+      "@calcom/webex/*": [
+        "packages/app-store/webex/*"
+      ],
+      "@calcom/whatsapp": [
+        "packages/app-store/whatsapp"
+      ],
+      "@calcom/whatsapp/*": [
+        "packages/app-store/whatsapp/*"
+      ],
+      "@calcom/whereby": [
+        "packages/app-store/whereby"
+      ],
+      "@calcom/whereby/*": [
+        "packages/app-store/whereby/*"
+      ],
+      "@calcom/zapier": [
+        "packages/app-store/zapier"
+      ],
+      "@calcom/zapier/*": [
+        "packages/app-store/zapier/*"
+      ],
+      "@calcom/zoho-bigin": [
+        "packages/app-store/zoho-bigin"
+      ],
+      "@calcom/zoho-bigin/*": [
+        "packages/app-store/zoho-bigin/*"
+      ],
+      "@calcom/zohocalendar": [
+        "packages/app-store/zohocalendar"
+      ],
+      "@calcom/zohocalendar/*": [
+        "packages/app-store/zohocalendar/*"
+      ],
+      "@calcom/zohocrm": [
+        "packages/app-store/zohocrm"
+      ],
+      "@calcom/zohocrm/*": [
+        "packages/app-store/zohocrm/*"
+      ],
+      "@calcom/zoomvideo": [
+        "packages/app-store/zoomvideo"
+      ],
+      "@calcom/zoomvideo/*": [
+        "packages/app-store/zoomvideo/*"
+      ],
+      "@calcom/atoms": [
+        "packages/platform/atoms"
+      ],
+      "@calcom/atoms/*": [
+        "packages/platform/atoms/*"
+      ],
+      "@calcom/platform-constants": [
+        "packages/platform/constants"
+      ],
+      "@calcom/platform-constants/*": [
+        "packages/platform/constants/*"
+      ],
+      "@calcom/platform-enums": [
+        "packages/platform/enums"
+      ],
+      "@calcom/platform-enums/*": [
+        "packages/platform/enums/*"
+      ],
+      "@calcom/platform-libraries": [
+        "packages/platform/libraries"
+      ],
+      "@calcom/platform-libraries/*": [
+        "packages/platform/libraries/*"
+      ],
+      "@calcom/platform-types": [
+        "packages/platform/types"
+      ],
+      "@calcom/platform-types/*": [
+        "packages/platform/types/*"
+      ],
+      "@calcom/platform-utils": [
+        "packages/platform/utils"
+      ],
+      "@calcom/platform-utils/*": [
+        "packages/platform/utils/*"
+      ],
+      "@calcom/base": [
+        "packages/platform/examples/base"
+      ],
+      "@calcom/base/*": [
+        "packages/platform/examples/base/*"
+      ],
+      "@calcom/example-app-credential-sync": [
+        "example-apps/credential-sync"
+      ],
+      "@calcom/example-app-credential-sync/*": [
+        "example-apps/credential-sync/*"
+      ],
+      "@calcom/repository/*": [
+        "packages/lib/server/repository/*"
+      ],
+      "@coss/ui/*": [
+        "packages/coss-ui/src/*"
+      ],
+      "~/*": [
+        "apps/web/modules/*"
+      ],
+      "@components/*": [
+        "apps/web/components/*"
+      ],
+      "@lib/*": [
+        "apps/web/lib/*"
+      ],
+      "@server/*": [
+        "apps/web/server/*"
+      ],
+      "@pages/*": [
+        "apps/web/pages/*"
+      ],
+      "@/*": [
+        "apps/api/v2/src/*"
+      ],
+      "@calcom/prisma/enums": [
+        "packages/prisma/enums"
+      ]
+    },
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "jsx": "react-jsx",
+    "resolveJsonModule": true,
+    "allowJs": true,
+    "esModuleInterop": true
+  }
+}

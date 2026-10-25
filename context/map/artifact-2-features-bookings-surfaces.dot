@@ -1,0 +1,85 @@
+digraph G {
+  rankdir=LR; newrank=true; compound=true; nodesep=0.25; ranksep=1.1; splines=true; pad=0.3;
+  fontname="Helvetica"; labelloc=t; fontsize=16;
+  label=<<B>Jak packages/features/bookings łączy się z tRPC, API v2 i atomami</B><BR ALIGN="CENTER"/><FONT POINT-SIZE="11">dependency-cruiser: węzły zwinięte do modułów, w features/bookings osobno pliki-wejścia; krawędzie wewnętrzne features/bookings pominięte. Etykieta = liczba importów plik→plik.</FONT>>;
+  node [shape=box style="rounded,filled" fontname="Helvetica" fontsize=10 margin="0.12,0.06"];
+  edge [fontname="Helvetica" fontsize=9 arrowsize=0.7 color="#475569"];
+  subgraph cluster_fb { label=<<B>packages/features/bookings</B>>; style="rounded,filled"; fillcolor="#f8fafc"; color="#64748b"; fontsize=12; margin=14;
+    subgraph cluster_client { label="przeważnie UI: importują web i atoms"; fontsize=10; fontcolor="#475569"; style="rounded,dashed"; color="#94a3b8"; margin=8;
+      FB_Booker [label="Booker/\n(pozostałe pliki)" fillcolor="#f3f4f6" color="#111827" shape=box3d];
+      FB_components [label="components/\n(pozostałe pliki)" fillcolor="#f3f4f6" color="#111827" shape=box3d];
+      FB_hooks [label="hooks/\n(pozostałe pliki)" fillcolor="#f3f4f6" color="#111827" shape=box3d];
+    }
+    subgraph cluster_shared { label="wspólne: UI i serwer"; fontsize=10; fontcolor="#475569"; style="rounded,dashed"; color="#94a3b8"; margin=8;
+      FB_types_ts [label="types.ts" fillcolor="#ffffff" color="#111827" penwidth=1.6];
+      FB_lib [label="lib/\n(pozostałe pliki)" fillcolor="#f3f4f6" color="#111827" shape=box3d];
+      FB_repositories_BookingRepository_ts [label="repositories/\nBookingRepository.ts" fillcolor="#ffffff" color="#111827" penwidth=1.6];
+    }
+    subgraph cluster_server { label="przeważnie serwer: importują tRPC i libraries"; fontsize=10; fontcolor="#475569"; style="rounded,dashed"; color="#94a3b8"; margin=8;
+      FB_services [label="services/\n(pozostałe pliki)" fillcolor="#f3f4f6" color="#111827" shape=box3d];
+      FB_lib_EventManager_ts [label="lib/\nEventManager.ts" fillcolor="#ffffff" color="#111827" penwidth=1.6];
+      FB_lib_getAllUserBookings_ts [label="lib/\ngetAllUserBookings.ts" fillcolor="#ffffff" color="#111827" penwidth=1.6];
+      FB_di [label="di/\n(pozostałe pliki)" fillcolor="#f3f4f6" color="#111827" shape=box3d];
+      FB_lib_handleCancelBooking_ts [label="lib/\nhandleCancelBooking.ts" fillcolor="#ffffff" color="#111827" penwidth=1.6];
+      FB_services_BookingAccessService_ts [label="services/\nBookingAccessService.ts" fillcolor="#ffffff" color="#111827" penwidth=1.6];
+      FB_repositories [label="repositories/\n(pozostałe pliki)" fillcolor="#f3f4f6" color="#111827" shape=box3d];
+    }
+  }
+    WEB [label="apps/web\nmodules/bookings" fillcolor="#d1f2d6" color="#15803d"];
+    ATOMS [label="packages/platform/atoms\n(osobno od libraries)" fillcolor="#fff3b0" color="#a16207"];
+    TYPES [label="platform/types\n(index.ts + bookings)" fillcolor="#e5e7eb" color="#4b5563"];
+    TRPC [label="tRPC\nviewer/bookings" fillcolor="#cfe3fb" color="#1d4ed8"];
+    LIB_bookings_ts [label="platform/libraries\nbookings.ts" fillcolor="#e9d5ff" color="#7e22ce"];
+    LIB_event_types_ts [label="platform/libraries\nevent-types.ts" fillcolor="#e9d5ff" color="#7e22ce"];
+    LIB_index_ts [label="platform/libraries\nindex.ts" fillcolor="#e9d5ff" color="#7e22ce"];
+    LIB_repositories_ts [label="platform/libraries\nrepositories.ts" fillcolor="#e9d5ff" color="#7e22ce"];
+    API [label="API v2\napps/api/v2/src/platform/bookings" fillcolor="#fde2c4" color="#c2410c"];
+  { rank=same; WEB; ATOMS; API; TYPES; }
+  { rank=same; TRPC; LIB_bookings_ts; LIB_event_types_ts; LIB_index_ts; LIB_repositories_ts; }
+  { rank=same; FB_Booker; FB_types_ts; FB_lib; FB_components; FB_hooks; FB_repositories_BookingRepository_ts; FB_services; FB_lib_EventManager_ts; FB_lib_getAllUserBookings_ts; FB_di; FB_lib_handleCancelBooking_ts; FB_services_BookingAccessService_ts; FB_repositories; }
+  WEB -> FB_Booker [label="55 + 16 typ." penwidth=3.20];
+  WEB -> FB_types_ts [label="4 + 13 typ." penwidth=2.84];
+  WEB -> ATOMS [label="13" penwidth=2.65];
+  WEB -> FB_lib [label="18 + 2 typ." penwidth=2.96];
+  ATOMS -> FB_Booker [label="18 + 5 typ." penwidth=3.06];
+  ATOMS -> FB_lib [label="3 + 4 typ." penwidth=2.20];
+  ATOMS -> FB_types_ts [label="4 typ." penwidth=1.80 style=dashed];
+  ATOMS -> TYPES [label="64 typ." penwidth=3.20 style=dashed constraint=false];
+  WEB -> FB_components [label="6" penwidth=2.09];
+  FB_components -> ATOMS [label="1" penwidth=0.80 constraint=false];
+  WEB -> FB_hooks [label="2" penwidth=1.30];
+  WEB -> FB_repositories_BookingRepository_ts [label="1" penwidth=0.80];
+  FB_services -> TRPC [label="4 + 1 typ." penwidth=1.96 constraint=false color="#dc2626" fontcolor="#dc2626"];
+  TRPC -> FB_lib [label="8" penwidth=2.30];
+  TRPC -> FB_lib_EventManager_ts [label="2" penwidth=1.30];
+  TRPC -> FB_repositories_BookingRepository_ts [label="5" penwidth=1.96];
+  FB_lib_getAllUserBookings_ts -> TRPC [label="1" penwidth=0.80 constraint=false color="#dc2626" fontcolor="#dc2626"];
+  TRPC -> FB_lib_getAllUserBookings_ts [label="1" penwidth=0.80 color="#dc2626" fontcolor="#dc2626"];
+  ATOMS -> WEB [label="1" penwidth=0.80 constraint=false color="#dc2626" fontcolor="#dc2626"];
+  ATOMS -> FB_components [label="6" penwidth=2.09];
+  LIB_bookings_ts -> FB_di [label="1" penwidth=0.80 arrowhead=onormal];
+  LIB_bookings_ts -> FB_lib [label="11 + 1 typ." penwidth=2.59];
+  LIB_bookings_ts -> FB_lib_handleCancelBooking_ts [label="1" penwidth=0.80 arrowhead=onormal];
+  LIB_bookings_ts -> FB_services [label="2" penwidth=1.30 arrowhead=onormal];
+  LIB_bookings_ts -> TRPC [label="1" penwidth=0.80 arrowhead=onormal];
+  LIB_event_types_ts -> FB_lib_EventManager_ts [label="1" penwidth=0.80];
+  LIB_index_ts -> FB_lib [label="4" penwidth=1.80];
+  LIB_index_ts -> FB_lib_getAllUserBookings_ts [label="1" penwidth=0.80];
+  LIB_index_ts -> FB_lib_handleCancelBooking_ts [label="1" penwidth=0.80];
+  LIB_index_ts -> FB_services_BookingAccessService_ts [label="1" penwidth=0.80 arrowhead=onormal];
+  LIB_index_ts -> FB_types_ts [label="1 typ." penwidth=0.80 style=dashed];
+  LIB_index_ts -> TRPC [label="1" penwidth=0.80 arrowhead=onormal];
+  TRPC -> FB_services_BookingAccessService_ts [label="4" penwidth=1.80];
+  LIB_repositories_ts -> FB_repositories_BookingRepository_ts [label="1" penwidth=0.80 arrowhead=onormal];
+  LIB_repositories_ts -> FB_repositories [label="1" penwidth=0.80 arrowhead=onormal];
+  TRPC -> FB_services [label="2" penwidth=1.30];
+  TRPC -> FB_repositories [label="3" penwidth=1.59];
+  TRPC -> FB_lib_handleCancelBooking_ts [label="1" penwidth=0.80];
+  API -> LIB_index_ts [label="13" penwidth=2.65];
+  API -> LIB_bookings_ts [label="3 + 1 typ." penwidth=1.80];
+  API -> TYPES [label="18 + 11 typ." penwidth=3.20 constraint=false];
+  API -> LIB_event_types_ts [label="1" penwidth=0.80];
+  subgraph cluster_legend { label="Legenda"; fontsize=10; style="rounded"; color="#cbd5e1"; margin=8;
+    l1 [shape=plaintext style="" label=<<FONT POINT-SIZE="9">linia ciągła = import w runtime<BR ALIGN="LEFT"/>linia przerywana = tylko typy (import type)<BR ALIGN="LEFT"/>strzałka pusta = re-export (export … from)<BR ALIGN="LEFT"/>grube pudełko 3D = zwinięty folder (pozostałe pliki)<BR ALIGN="LEFT"/>strzałka = „importuje" (od importującego do importowanego)<BR ALIGN="LEFT"/><BR ALIGN="LEFT"/><FONT COLOR="#dc2626"><B>czerwone = reguły z .dependency-cruiser.cjs</B><BR ALIGN="LEFT"/>services/ (pozostałe pliki) → tRPC viewer/bookings: features-not-to-higher-layers<BR ALIGN="LEFT"/>lib/ getAllUserBookings.ts → tRPC viewer/bookings: no-circular, features-not-to-higher-layers<BR ALIGN="LEFT"/>tRPC viewer/bookings → lib/ getAllUserBookings.ts: no-circular<BR ALIGN="LEFT"/>packages/platform/atoms (osobno od libraries) → apps/web modules/bookings: atoms-not-to-trpc-or-web<BR ALIGN="LEFT"/></FONT><BR ALIGN="LEFT"/><B>Krawędzie bezpośrednie do features/bookings</B><BR ALIGN="LEFT"/>API v2: 0 (tylko przez platform/libraries)<BR ALIGN="LEFT"/>platform/types: 0<BR ALIGN="LEFT"/></FONT>>];
+  }
+}

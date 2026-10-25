@@ -21,6 +21,9 @@
 - `yarn lint:report` - Generate Biome lint report
 - `yarn type-check` - Run TypeScript type checking
 - `yarn format` - Format code with Biome
+- `yarn depcruise` - Check package layering and circular dependencies (dependency-cruiser); known violations in `.dependency-cruiser-known-violations.json` are ignored
+- `yarn depcruise:baseline` - Update the known-violations baseline (run after fixing violations to shrink it; never to hide new ones)
+- `yarn depcruise:graph` - Render a high-level package graph to `dependency-graph.svg` (needs GraphViz `dot`)
 
 ## Testing Commands
 

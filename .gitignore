@@ -80,6 +80,9 @@ packages/app-store/types
 # Linting
 lint-results
 
+# dependency-cruiser
+dependency-graph.svg
+
 #Storybook
 apps/storybook/build-storybook.log
 

@@ -1,0 +1,71 @@
+strict digraph "dependency-cruiser output"{
+    rankdir="LR" splines="true" overlap="false" nodesep="0.16" ranksep="0.18" fontname="Helvetica-bold" fontsize="9" style="rounded,bold,filled" fillcolor="#ffffff" compound="true"
+    node [shape="box" style="rounded, filled" height="0.2" color="black" fillcolor="#ffffcc" fontcolor="black" fontname="Helvetica" fontsize="9"]
+    edge [arrowhead="normal" arrowsize="0.6" penwidth="2.0" color="#00000033" fontname="Helvetica" fontsize="9"]
+
+    "apps/api/v2/src/platform/bookings" [label=<apps/api/v2/src/platform/<BR/><B>bookings</B>> tooltip="bookings" URL="apps/api/v2/src/platform/bookings" shape="box3d"]
+    "apps/api/v2/src/platform/bookings" -> "packages/platform/libraries/index.ts"
+    "apps/api/v2/src/platform/bookings" -> "packages/platform/libraries/bookings.ts" [arrowhead="onormal" penwidth="1.0"]
+    "apps/api/v2/src/platform/bookings" -> "packages/platform/types"
+    "apps/api/v2/src/platform/bookings" -> "packages/platform/libraries/event-types.ts"
+    "apps/web/modules/bookings" [label=<apps/web/modules/<BR/><B>bookings</B>> tooltip="bookings" URL="apps/web/modules/bookings" shape="box3d"]
+    "apps/web/modules/bookings" -> "packages/features/bookings/Booker" [arrowhead="onormal" penwidth="1.0"]
+    "apps/web/modules/bookings" -> "packages/features/bookings/types.ts" [arrowhead="onormal" penwidth="1.0"]
+    "apps/web/modules/bookings" -> "packages/platform/atoms"
+    "apps/web/modules/bookings" -> "packages/features/bookings/lib"
+    "apps/web/modules/bookings" -> "packages/features/bookings/components"
+    "apps/web/modules/bookings" -> "packages/features/bookings/hooks"
+    "apps/web/modules/bookings" -> "packages/features/bookings/repositories/BookingRepository.ts"
+    "packages/features/bookings/Booker" [label=<packages/features/bookings/<BR/><B>Booker</B>> tooltip="Booker" URL="packages/features/bookings/Booker" shape="box3d"]
+    "packages/features/bookings/components" [label=<packages/features/bookings/<BR/><B>components</B>> tooltip="components" URL="packages/features/bookings/components" shape="box3d"]
+    "packages/features/bookings/components" -> "packages/platform/atoms"
+    "packages/features/bookings/di" [label=<packages/features/bookings/<BR/><B>di</B>> tooltip="di" URL="packages/features/bookings/di" shape="box3d"]
+    "packages/features/bookings/hooks" [label=<packages/features/bookings/<BR/><B>hooks</B>> tooltip="hooks" URL="packages/features/bookings/hooks" shape="box3d"]
+    "packages/features/bookings/lib" [label=<packages/features/bookings/<BR/><B>lib</B>> tooltip="lib" URL="packages/features/bookings/lib" fillcolor="#ccffcc" shape="box3d"]
+    "packages/features/bookings/lib/EventManager.ts" [label=<packages/features/bookings/lib/<BR/><B>EventManager.ts</B>> tooltip="EventManager.ts" URL="packages/features/bookings/lib/EventManager.ts" fillcolor="#ddfeff"]
+    "packages/features/bookings/lib/getAllUserBookings.ts" [label=<packages/features/bookings/lib/<BR/><B>getAllUserBookings.ts</B>> tooltip="getAllUserBookings.ts" URL="packages/features/bookings/lib/getAllUserBookings.ts" fillcolor="#ddfeff"]
+    "packages/features/bookings/lib/getAllUserBookings.ts" -> "packages/trpc/server/routers/viewer/bookings" [xlabel="features-not-to-higher-layers" tooltip="features-not-to-higher-layers" arrowhead="normalnoneodot" fontcolor="red" color="red"]
+    "packages/features/bookings/lib/handleCancelBooking.ts" [label=<packages/features/bookings/lib/<BR/><B>handleCancelBooking.ts</B>> tooltip="handleCancelBooking.ts" URL="packages/features/bookings/lib/handleCancelBooking.ts" fillcolor="#ddfeff"]
+    "packages/features/bookings/repositories" [label=<packages/features/bookings/<BR/><B>repositories</B>> tooltip="repositories" URL="packages/features/bookings/repositories" shape="box3d"]
+    "packages/features/bookings/repositories/BookingRepository.ts" [label=<packages/features/bookings/repositories/<BR/><B>BookingRepository.ts</B>> tooltip="BookingRepository.ts" URL="packages/features/bookings/repositories/BookingRepository.ts" fillcolor="#ddfeff"]
+    "packages/features/bookings/services" [label=<packages/features/bookings/<BR/><B>services</B>> tooltip="services" URL="packages/features/bookings/services" shape="box3d"]
+    "packages/features/bookings/services" -> "packages/trpc/server/routers/viewer/bookings" [xlabel="features-not-to-higher-layers" tooltip="features-not-to-higher-layers" fontcolor="red" color="red"]
+    "packages/features/bookings/services/BookingAccessService.ts" [label=<packages/features/bookings/services/<BR/><B>BookingAccessService.ts</B>> tooltip="BookingAccessService.ts" URL="packages/features/bookings/services/BookingAccessService.ts" fillcolor="#ddfeff"]
+    "packages/features/bookings/types.server.ts" [label=<packages/features/bookings/<BR/><B>types.server.ts</B>> tooltip="types.server.ts" URL="packages/features/bookings/types.server.ts" fillcolor="#ccffcc"]
+    "packages/features/bookings/types.ts" [label=<packages/features/bookings/<BR/><B>types.ts</B>> tooltip="types.ts" URL="packages/features/bookings/types.ts" fillcolor="#ddfeff"]
+    "packages/platform/atoms" [label=<packages/platform/<BR/><B>atoms</B>> tooltip="atoms" URL="packages/platform/atoms" fillcolor="#ccffcc" shape="box3d"]
+    "packages/platform/atoms" -> "packages/features/bookings/Booker"
+    "packages/platform/atoms" -> "packages/features/bookings/lib"
+    "packages/platform/atoms" -> "packages/features/bookings/types.ts" [arrowhead="onormal" penwidth="1.0"]
+    "packages/platform/atoms" -> "packages/platform/types" [arrowhead="onormal" penwidth="1.0"]
+    "packages/platform/atoms" -> "apps/web/modules/bookings" [xlabel="atoms-not-to-trpc-or-web" tooltip="atoms-not-to-trpc-or-web" fontcolor="red" color="red"]
+    "packages/platform/atoms" -> "packages/features/bookings/components"
+    "packages/platform/libraries/bookings.ts" [label=<packages/platform/libraries/<BR/><B>bookings.ts</B>> tooltip="bookings.ts" URL="packages/platform/libraries/bookings.ts" fillcolor="#ddfeff"]
+    "packages/platform/libraries/bookings.ts" -> "packages/features/bookings/di" [arrowhead="inv"]
+    "packages/platform/libraries/bookings.ts" -> "packages/features/bookings/lib" [arrowhead="inv"]
+    "packages/platform/libraries/bookings.ts" -> "packages/features/bookings/lib/handleCancelBooking.ts" [arrowhead="inv"]
+    "packages/platform/libraries/bookings.ts" -> "packages/features/bookings/services" [arrowhead="inv"]
+    "packages/platform/libraries/bookings.ts" -> "packages/trpc/server/routers/viewer/bookings" [arrowhead="inv"]
+    "packages/platform/libraries/event-types.ts" [label=<packages/platform/libraries/<BR/><B>event-types.ts</B>> tooltip="event-types.ts" URL="packages/platform/libraries/event-types.ts" fillcolor="#ddfeff"]
+    "packages/platform/libraries/event-types.ts" -> "packages/features/bookings/lib/EventManager.ts"
+    "packages/platform/libraries/index.ts" [label=<packages/platform/libraries/<BR/><B>index.ts</B>> tooltip="index.ts" URL="packages/platform/libraries/index.ts" fillcolor="#ddfeff"]
+    "packages/platform/libraries/index.ts" -> "packages/features/bookings/lib"
+    "packages/platform/libraries/index.ts" -> "packages/features/bookings/lib/getAllUserBookings.ts"
+    "packages/platform/libraries/index.ts" -> "packages/features/bookings/lib/handleCancelBooking.ts"
+    "packages/platform/libraries/index.ts" -> "packages/features/bookings/services/BookingAccessService.ts" [arrowhead="inv"]
+    "packages/platform/libraries/index.ts" -> "packages/features/bookings/types.ts" [arrowhead="onormal" penwidth="1.0"]
+    "packages/platform/libraries/index.ts" -> "packages/trpc/server/routers/viewer/bookings" [arrowhead="inv"]
+    "packages/platform/libraries/repositories.ts" [label=<packages/platform/libraries/<BR/><B>repositories.ts</B>> tooltip="repositories.ts" URL="packages/platform/libraries/repositories.ts" fillcolor="#ddfeff"]
+    "packages/platform/libraries/repositories.ts" -> "packages/features/bookings/repositories/BookingRepository.ts" [arrowhead="inv"]
+    "packages/platform/libraries/repositories.ts" -> "packages/features/bookings/repositories" [arrowhead="inv"]
+    "packages/platform/types" [label=<packages/platform/<BR/><B>types</B>> tooltip="types" URL="packages/platform/types" shape="box3d"]
+    "packages/trpc/server/routers/viewer/bookings" [label=<packages/trpc/server/routers/viewer/<BR/><B>bookings</B>> tooltip="bookings" URL="packages/trpc/server/routers/viewer/bookings" shape="box3d"]
+    "packages/trpc/server/routers/viewer/bookings" -> "packages/features/bookings/lib"
+    "packages/trpc/server/routers/viewer/bookings" -> "packages/features/bookings/lib/EventManager.ts"
+    "packages/trpc/server/routers/viewer/bookings" -> "packages/features/bookings/repositories/BookingRepository.ts"
+    "packages/trpc/server/routers/viewer/bookings" -> "packages/features/bookings/lib/getAllUserBookings.ts" [xlabel="no-circular" tooltip="no-circular" arrowhead="normalnoneodot" fontcolor="red" color="red"]
+    "packages/trpc/server/routers/viewer/bookings" -> "packages/features/bookings/services/BookingAccessService.ts"
+    "packages/trpc/server/routers/viewer/bookings" -> "packages/features/bookings/services"
+    "packages/trpc/server/routers/viewer/bookings" -> "packages/features/bookings/repositories"
+    "packages/trpc/server/routers/viewer/bookings" -> "packages/features/bookings/lib/handleCancelBooking.ts"
+}

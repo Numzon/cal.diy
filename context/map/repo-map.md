@@ -1,12 +1,12 @@
 ---
-artifact: repo-map
+
+## artifact: repo-map
 generated: 2026-10-25
 repo_root: .
 history_window: 12 months ago..HEAD @ 0f19cc46ef (effective 2025-10-26..2026-10-19; repo history starts 2021-03-10)
 evidence_sources: git only (gh not installed; no forge data)
 graph_coverage: TypeScript/JS (only language): own regex import scanner over tracked files, level 4 fallback, confidence low-to-medium; HEAD tree only
 evidence: context/map/evidence/
----
 
 # Project Map — Cal.diy
 
@@ -65,7 +65,7 @@ Buzz families (H/M/L, relative across live capabilities): **C**hange, **F**ix pr
 | **public-api** | API v2 (NestJS) + `@calcom/atoms` React components | **high** (public exposure, external consumers, API auth) | C **H** (about 16% of commits are version-bump lockstep) · F M (41%) · Fr M · A L (0.09/1k, diluted) · R **H** (cycles + boundary breaks) | rising pre, 1.8/30d post | `apps/api/v2/src/{platform,modules}`, `packages/platform/{atoms,libraries,types}` |
 | event-types | event type config, hosts, private links, booking questions | **high** (data, core value, booking and slots depend on it) | C M · F M (46%) · Fr L · A L-M · R **H** (717 files / 17 caps) | constant | `packages/features/eventtypes`, `apps/web/modules/event-types`, trpc `viewer/eventTypes` |
 | availability | schedules, OOO, holidays, slots, troubleshooter | **high** (core value, booking depends on it) | C M · F M · Fr L · A M (0.88/1k) · R M | constant, near-silent post | `packages/features/{availability,schedules,slots}`, trpc `viewer/{availability,slots}` |
-| calendars | Google/Outlook/CalDAV connect, selected + destination calendars, cache, subscriptions | **high** (external integrations, credentials, availability depends on it) | C M · F L (38%) · Fr M (freebusy batching revert, no re-land seen) · A M · R M | fading post | `packages/features/{calendars,calendar-subscription,selectedCalendar}`, `packages/app-store/*calendar*` |
+| calendars | Google/Outlook/CalDAV connect, selected + destination calendars, cache, subscriptions | **high** (external integrations, credentials, availability depends on it) | C M · F L (38%) · Fr M (freebusy batching revert, no re-land seen) · A M · R M | fading post | `packages/features/{calendars,calendar-subscription,selectedCalendar}`, `packages/app-store/*calendar`* |
 | payments | Stripe/PayPal/HitPay/Alby/BTCPay, payment step in booking, credits | **high** (money, webhooks) | C L · F M (47%, n=53) · Fr L · A M (0.90/1k) · R M | thin post | `packages/app-store/{stripepayment,paypal,hitpay,…}`, `app-store/_utils/payments`, `bookings/lib/payment` |
 | identity | NextAuth sign-in, signup, OAuth provider, API keys | **high** (identity/access, public entry) | C M · F M · Fr M (spillover-heavy) · A M · R **H** (`getServerSession` 44 importers) | silent after Jun | `packages/features/{auth,oauth}`, `apps/web/app/(use-page-wrapper)/auth`, trpc `viewer/{auth,apiKeys,oAuth}` |
 | data-model | Prisma schema, migrations | **high** (data, everything depends on it) | C L · F L (20%) · Fr L · A M (1.21/1k, 14 markers) · R H (stable contract, see Looks hot) | fading | `packages/prisma` |
@@ -78,12 +78,14 @@ Buzz families (H/M/L, relative across live capabilities): **C**hange, **F**ix pr
 | admin-safety | admin pages, blocklist/watchlist, bot detection, flags | medium | C M (peaked Jan, then dead) · F L · Fr L · A L · R M | dead post (1 commit) | `packages/features/{flags,feature-opt-in,watchlist}`, `apps/web/app/…/settings/(admin-layout)` |
 
 Other lines:
+
 - **Platform & infrastructure** (`platform-infra`, criticality high: pipeline and jobs can break production): 477 commits, the most of any area; 72 of 165 fixes are CI/release iteration. Contains `.github`, root configs, `tasker` (background jobs), cron routes. Faded to 0 commits after June.
 - **Shared foundations** (`foundations`: `packages/lib`, `types`, `testing`, `features/di`, `data-table`): hub with Ca=Ce=19. `useLocale` has 398 importers, `constants` 316, `logger` 181. It reaches back into `ui-kit` (120 edges), so it is not a clean bottom layer. **Design system** (`ui-kit`, `packages/ui`, `coss-ui`) has the highest broad fix share (60%), mostly UI polish. **Localisation** (`i18n`) is the stable sink (instability 0.0).
 - **Docs & planning**: README, `agents/` (45 rules, 56 skill files), `specs/` (1 live spec). 87% of its changes are Markdown.
 - **Removed at HEAD, history only, never ranked**: `removed-ee` (13.8% of window changes, deleted 2026-04-15) and `companion` (8.3%, Expo + Chrome app moved to `calcom/companion` on 2026-02-16).
 
 **Folder structure vs capabilities.**
+
 - One capability spans many folders. Booking lives in at least 6 places: `packages/features/bookings`, `apps/web/modules/bookings`, trpc `viewer/bookings`, `apps/web/app/(booking-page-wrapper)`, `apps/api/v2/src/platform/bookings` and `packages/platform/atoms/booker`.
 - One folder serves several capabilities. `packages/app-store` holds calendars, video, payments, webhooks/automation, CRM and analytics under one registry. `packages/features` and `apps/web/modules` mix every capability. `packages/trpc/server/routers/viewer` is one folder per capability.
 - API v2 is organised by endpoint, not by capability, so a capability's HTTP surface is not where its logic is.
@@ -98,7 +100,7 @@ Source tags: **graph** = runtime import edge (HEAD tree), **co-change** = commit
 |---|---|---|---|
 | **booking core ↔ API v2 / Atoms Booker twins** | graph: `public-api → booking` 60 edges, `booking → public-api` 14, through the `packages/platform/libraries` façade (143 outgoing edges). Co-change: 22 commits, confidence 0.10 (`1-history.md:179`) | high structural, **low co-change** | **real**. A booking change without its twin cannot be seen in history, `unknown` |
 | **apps-marketplace as fan-in registry** | graph: conferencing→ 95, calendars→ 61, booking→ 60, payments→ 44, event-types→ 27. Contract files `_utils/getAppKeysFromSlug.ts` (29 importers), `locations.ts` (27) | high | partly mechanical (registry fan-in by design, rule 2); no build guard seen |
-| **app-store reaches back into features/trpc** | graph: 65 runtime boundary violations in 43 files (`_utils/payments/*`, `_utils/getCalendar.ts` → `calendar-subscription`, zapier). Stated rule is in an untracked, unwired `.dependency-cruiser.cjs` | high | **real**; enforcement `unknown` |
+| **app-store reaches back into features/trpc** | graph: 65 runtime boundary violations in 43 files (`_utils/payments/`*, `_utils/getCalendar.ts` → `calendar-subscription`, zapier). Stated rule is in an untracked, unwired `.dependency-cruiser.cjs` | high | **real**; enforcement `unknown` |
 | web ↔ atoms UI loop | graph: 8-file runtime cycle `EventTypeEmbed.tsx → … → EventTypePlatformWrapper.tsx → … → EventTypeLayout.tsx`; 11 runtime `atoms → apps/web/modules` imports | medium | **real** (embeds, event-types, public-api) |
 | booking ↔ availability, booking ↔ event-types, booking → webhooks / accounts | graph: 18/17, 26, 23/23. Co-change booking–event-types 49 (0.32) | medium | real; booking-event-types co-change is partly feature sweeps |
 | apps-marketplace ↔ payments (mutual) | graph 14 ↔ 44; payments → booking 8, → identity 6 through `_utils/payments` | medium | real, the same boundary breach as above |
@@ -115,6 +117,7 @@ DI containers, tRPC router wiring by name, tasker queues, `*.generated.ts` app r
 Two capabilities qualify. The bar is high criticality plus high buzz in at least two independent families.
 
 ### 1. Booking (core and its twins)
+
 - **Why**: the product's money-and-data path, with the widest outgoing coupling in the repo and the largest hand-kept twin surface.
 - **Independent signals**:
   - *Change*: 1,518 changes and 361 commits, the highest in the repo. 18 post-conversion commits keep it the most active survivor (`1-history.md:17,78`).
@@ -127,6 +130,7 @@ Two capabilities qualify. The bar is high criticality plus high buzz in at least
 - **Caution before a bigger change**: any change here also needs the matching change in `apps/api/v2/src/platform/bookings` and `packages/platform/atoms/booker`. Nothing links them mechanically.
 
 ### 2. Public API v2 and Atoms
+
 - **Why**: public, externally consumed surface that mirrors most of the domain through a façade, with boundary breaks and real cycles.
 - **Independent signals**:
   - *Change*: 1,397 changes and 329 commits. About 52 commits are version-bump lockstep (mechanical), and the rest is controller/service work (`1-history.md:18,176`).
@@ -136,6 +140,7 @@ Two capabilities qualify. The bar is high criticality plus high buzz in at least
 - **Caution**: the API/Atoms consumers live outside this repo (`unknown (external)`). It is also `unknown` whether `apps/api/v2` builds `platform-libraries` from source or pins a published build, so a change may not reach the API when expected.
 
 ### Watch (missed the bar narrowly)
+
 - **identity** (high): reach is high (`getServerSession` 44 importers, 906 files), and 25% of its files read Prisma directly. But change, fix and friction are only medium, and it has been silent since June. A critical capability nobody discusses (0 plans). Files: `packages/features/auth/lib/getServerSession.ts`, `next-auth-options.ts`.
 - **event-types** (high): reach is high (717 files, `defaultEvents.ts` 13 importers). Fix share is 46% on small deltas. Twin with API v2 event-type inputs is `unknown`.
 - **apps-marketplace** (medium): reverts (7 real), debt (1.20/1k) and reach are all high. But reach is partly registry fan-in (rule 2), and the two analytics-schema reverts share one cause. It misses the "three independent" bar.
@@ -144,6 +149,7 @@ Two capabilities qualify. The bar is high criticality plus high buzz in at least
 - **data-model** (high): the widest contract (`prisma/index.ts` 376 importers) and a hand-kept pair with API v2 DTOs, but low change and low fix share. It is a stable contract, not a hot area.
 
 ### Looks hot, is not
+
 - **platform-infra**: 477 commits and 72 CI/release fixes with a 19% clean-fix ratio. Pipeline iteration plus a catch-all footprint (`apps/web/package.json`), with one owner (Keith Williams) whose share is 2.9× his team-wide share. Shared cause counted once; the owner left in April.
 - **ui-kit** (60% fix) and **i18n** (63 fixes): UI polish and locale completion (rules 5, 8).
 - **accounts**: 10 raw reverts are UI-shell polish iterations (sticky navbar, fixed header) plus a team-creation flow that was reverted, re-landed and later deleted. Change comes from the onboarding-v2 campaign, a shared cause.
